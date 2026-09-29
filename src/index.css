@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #05070a;
+  --ink-2: #0a0e12;
+  --bone: #dfe7e0;
+  --bone-dim: #aab4ad;
+  --muted: #78837c;
+  --line: rgba(223, 231, 224, 0.13);
+  --line-soft: rgba(223, 231, 224, 0.07);
+  --vermilion: #e0231c;
+  --ember: #ff5a3c;
+  --gold: #c9a24a;
+  --pad: clamp(20px, 3.4vw, 56px);
+  --nav-h: 84px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--bone);
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(223, 231, 224, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vermilion);
+}
+
+/* Atmosphere Vignette & Film Grain */
+#vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(125% 95% at 50% 42%, transparent 40%, rgba(2, 4, 6, 0.65) 100%);
+}
+
+#grain {
+  position: fixed;
+  inset: -1px;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Japanese typography accent */
+.font-jp {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* Card Glow Effect */
+.card-glow {
+  isolation: isolate;
+}
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(224, 35, 28, 0.12), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Masked lines & text reveal animations */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+/* Section backdrop gradient scrim */
+.sec-scrim::before {
+  content: '';
+  position: absolute;
+  inset: -20% -4%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(110% 62% at 30% 50%, rgba(4,7,10,0.88), rgba(4,7,10,0.62) 42%, rgba(4,7,10,0.18) 74%, rgba(4,7,10,0));
+  -webkit-mask-image: linear-gradient(transparent, #000 44%);
+  mask-image: linear-gradient(transparent, #000 44%);
+}
