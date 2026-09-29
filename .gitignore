@@ -19,3 +19,5 @@ check_hrefs.js
 download_assets.js
 find_yash.js
 verify.js
+
+.vercel

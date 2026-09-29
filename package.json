@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node -e \"const fs=require('fs'); fs.copyFileSync('portfolio.html', 'dist/portfolio.html'); fs.copyFileSync('portfolio.html', 'dist/index.html'); fs.copyFileSync('work.html', 'dist/work.html'); fs.cpSync('projects', 'dist/projects', {recursive:true}); fs.cpSync('secret-pathways-assets', 'dist/secret-pathways-assets', {recursive:true}); fs.copyFileSync('identity.css', 'dist/identity.css'); fs.copyFileSync('arrival.js', 'dist/arrival.js'); fs.copyFileSync('mohith-b-resume.pdf', 'dist/mohith-b-resume.pdf');\"",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

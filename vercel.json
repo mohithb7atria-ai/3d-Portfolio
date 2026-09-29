@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/portfolio.html" },
+    { "source": "/projects", "destination": "/portfolio.html#pathways" },
+    { "source": "/work", "destination": "/work.html" }
+  ]
+}
